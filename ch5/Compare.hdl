@@ -1,0 +1,34 @@
+CHIP Compare {
+  IN in[16], j1, j2, j3;
+  OUT out;
+  PARTS:
+  // 1. out < 0
+  And(a=in[15], b=true, out=cmp1);
+  And(a=cmp1, b=j1, out=a);
+  // 2. out = 0
+  Or16Way(in=in, out=orout);
+  Not(in=orout, out=cmp2);
+  And(a=cmp2, b=j2, out=b);
+  // 3. out > 0
+  Not(in=in[15], out=notout);
+  And(a=orout, b=notout, out=cmp3);
+  And(a=cmp3, b=j3, out=c);
+
+  // 4. if j1 = 1 & j2 = 1 & j3 = 1 then out = 1
+  And(a=j1, b=j2, out=allone1);
+  And(a=allone1, b=j3, out=allone);
+
+  // 5. if j1 = 0 & j2 = 0 & j3 = 0 then out = 0
+  Not(in=j1, out=j1not);
+  Not(in=j2, out=j2not);
+  Not(in=j3, out=j3not);
+  And(a=j1not, b=j2not, out=allzero1);
+  And(a=allzero1, b=j3not, out=allzero);
+
+  // 5. final out
+  Or(a=a, b=b, out=shouldJump1);
+  Or(a=shouldJump1, b=c, out=shouldJump2);
+  Or(a=shouldJump2, b=allone, out=shouldJump3);
+  Not(in=allzero, out=allzeronot);
+  And(a=shouldJump3, b=allzeronot, out=out);
+}
