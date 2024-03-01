@@ -1,0 +1,10 @@
+CHIP Xor16 {
+    IN a[16], b[16];
+    OUT out[16];
+    PARTS:
+    Not16(in=a, out=nota);
+    Not16(in=b, out=notb);
+    And16(a=a, b=notb, out=andout1);
+    And16(a=nota, b=b, out=andout2);
+    Or16(a=andout1, b=andout2, out=out);
+}
