@@ -1,0 +1,10 @@
+CHIP DMux16 {
+    IN in[16], sel;
+    OUT a[16], b[16];
+    PARTS:
+    Not(in=sel, out=selnot);
+    FanOut16(in=selnot, out=selnot16);
+    FanOut16(in=sel, out=sel16);
+    And16(a=in, b=selnot16, out=a);
+    And16(a=in, b=sel16, out=b);
+}

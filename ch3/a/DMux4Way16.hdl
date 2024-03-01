@@ -1,0 +1,14 @@
+CHIP DMux4Way16 {
+    IN in[16], sel[2];
+    OUT a[16], b[16], c[16], d[16];
+
+    PARTS:
+    DMux16(in=in, sel=sel[0], a=out1a, b=out1b);
+    DMux16(in=in, sel=sel[0], a=out2a, b=out2b);
+    FanOut16(in=sel[1], out=sel1);
+    And16(a=sel1, b=out2a, out=c);
+    And16(a=sel1, b=out2b, out=d);
+    Not16(in=sel1, out=notout);
+    And16(a=notout, b=out1a, out=a);
+    And16(a=notout, b=out1b, out=b);
+}

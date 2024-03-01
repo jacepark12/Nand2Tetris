@@ -1,0 +1,18 @@
+CHIP DMux8Way16 {
+    IN in[16], sel[3];
+    OUT a[16], b[16], c[16], d[16], e[16], f[16], g[16], h[16];
+
+    PARTS:
+    DMux4Way16(in=in, sel=sel[0..1], a=out1a, b=out1b, c=out1c, d=out1d);
+    DMux4Way16(in=in, sel=sel[0..1], a=out2a, b=out2b, c=out2c, d=out2d);
+    FanOut16(in=sel[2], out=sel2);
+    Not16(in=sel2, out=notout);
+    And16(a=notout, b=out1a, out=a);
+    And16(a=notout, b=out1b, out=b);
+    And16(a=notout, b=out1c, out=c);
+    And16(a=notout, b=out1d, out=d);
+    And16(a=sel2, b=out2a, out=e);
+    And16(a=sel2, b=out2b, out=f);
+    And16(a=sel2, b=out2c, out=g);
+    And16(a=sel2, b=out2d, out=h);
+}
