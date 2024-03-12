@@ -1,5 +1,5 @@
 # Nand2Tetris
-Project of \<The Elements of Computing Systems\>
+Project of [The Elements of Computing Systems](https://www.nand2tetris.org/)
 
 # Completed Projects
 - [x] 1. Boolean Logic
@@ -56,7 +56,7 @@ Project of \<The Elements of Computing Systems\>
     - [x] Max.asm
 
 # Chapter. 7 Virtual Machine I: Stack Arithmetic
-
+* [vm_translater/code_writer.py](https://github.com/jacepark12/Nand2Tetris/blob/main/vm_translator/code_writer.py)
 - [x] VM-Translator (python)
     - [x] SimpleAdd.vm
     - [x] StackTest.vm
@@ -65,6 +65,23 @@ Project of \<The Elements of Computing Systems\>
     - [x] StaticTest.vm
 
 # Chapter 8. Virtual Machine II: ProgramControl
+* [vm_translater/code_writer.py](https://github.com/jacepark12/Nand2Tetris/blob/main/vm_translator/code_writer.py)
+
+## Marker feature for easy debugging
+https://github.com/jacepark12/Nand2Tetris/blob/02795f861fff8435742314408dfb20e3af773a80/vm_translator/code_writer.py#L7-L22
+
+* Command marker decorator inserts comment while writing asm code.
+```
+// start of [push constant 10]
+@10
+D=A
+@SP
+A=M
+M=D
+@SP
+M=M+1
+// end of [push constant 10]
+```
 
 - [x] VM-Translator (python)
     - [x] ProgramFlow/BasicLoop
@@ -74,10 +91,20 @@ Project of \<The Elements of Computing Systems\>
     - [x] FunctionCalls/StaticsTest
 
 # Chapter 10. Compiler I: Syntax Analys
-
+* [tokenizer.py](https://github.com/jacepark12/Nand2Tetris/blob/main/compiler/tokenizer.py)
 - [x] JackAnalyzer
 
 # Chapter 11. Compiler II: Code Generation
+
+## Class definition for rule define
+https://github.com/jacepark12/Nand2Tetris/blob/02795f861fff8435742314408dfb20e3af773a80/compiler/rule.py#L34-L57
+
+## Example rule definition for parser
+https://github.com/jacepark12/Nand2Tetris/blob/02795f861fff8435742314408dfb20e3af773a80/compiler/rule_definition.py#L10-L34
+
+## Rule processing implementation
+https://github.com/jacepark12/Nand2Tetris/blob/02795f861fff8435742314408dfb20e3af773a80/compiler/compile_engine.py#L342-L366
+
 - [x] Seven
 - [x] ConvertToBin
 - [x] Square
