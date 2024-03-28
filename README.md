@@ -1,5 +1,6 @@
 # Nand2Tetris
-Project of [The Elements of Computing Systems](https://www.nand2tetris.org/)
+* Project of [The Elements of Computing Systems](https://www.nand2tetris.org/)
+* [Review blog](https://jspark.blog/elements-of-computing-system/)
 
 # Completed Projects
 - [x] 1. Boolean Logic
